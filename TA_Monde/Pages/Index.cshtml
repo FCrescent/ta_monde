@@ -29,6 +29,11 @@
         border-radius: 50%;
         border: 2px white solid;
         position: absolute;
+        z-index: 100;
+    }
+    .area {
+        border: 2px black solid;
+        position: absolute;
     }
 
     .ent {
@@ -67,35 +72,11 @@
 
 <script src="~/js/village-un-01.js"></script>
 <script>
-    var characters = [
-        new Character("ent", 50, 50, 50),
-        new Character("inf", 100, 50, 60),
-        new Character("int", 50, 100, 50),
-        new Character("ifn", 100, 100, 60)
-    ];
-    var map = document.getElementsByClassName("map")[0];
-    var charsInfoList = document.getElementsByClassName("chars-info-list")[0];
-
-    characters.forEach(function iterate(character, index, array) {  //character => {
-        let characterDiv = document.createElement("div");
-        characterDiv.classList.add("character", character.typeTa)
-        characterDiv.style.left = character.appearX.toString() + "px";
-        characterDiv.style.top = character.appearY.toString() + "px";
-        map.appendChild(characterDiv);
-
-        let charInfoLi = document.createElement("li");
-        charInfoLi.innerHTML = "#" + (index + 1).toString() + " (" + character.typeTa.toUpperCase() + ") :";
-        charsInfoList.appendChild(charInfoLi);
-
-        let charInfoUl = document.createElement("ul");
-        charInfoLi.appendChild(charInfoUl);
-        let happinessInfoLi = document.createElement("li");
-        happinessInfoLi.innerHTML = "Bonheur : " + character.happiness.toString() + "/100"
-        charInfoUl.appendChild(happinessInfoLi);
+   
 
 
 
-    });
+  
 
 //document.getElementById("demo").innerHTML = "Hello JavaScript!";
 </script> 
