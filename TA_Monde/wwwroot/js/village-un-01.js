@@ -30,7 +30,7 @@ class Area {
 
 var characters = [
     new Character("ent", 250, 250, 45),
-    new Character("inf", 300, 250, 35),
+    new Character("inf", 300, 250, 50),
     new Character("int", 250, 300, 50),
     new Character("ifn", 300, 300, 60)
    
