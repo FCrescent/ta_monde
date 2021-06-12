@@ -29,16 +29,17 @@ class Area {
 
 
 var characters = [
-    new Character("ent", 50, 50, 50),
-    new Character("inf", 100, 50, 60),
-    new Character("int", 50, 100, 50),
-    new Character("ifn", 100, 100, 60)
+    new Character("ent", 250, 250, 45),
+    new Character("inf", 300, 250, 35),
+    new Character("int", 250, 300, 50),
+    new Character("ifn", 300, 300, 60)
+   
 ];
 var map = document.getElementsByClassName("map")[0];
 var charsInfoList = document.getElementsByClassName("chars-info-list")[0];
 
 var specialAreas = [
-    new Area("Cuisine", 550, 202, 100, 100, "brown"),
+    new Area("Cuisine", 550, 202, 100, 100, "coral"),
     new Area("Chambres", 450, 300, 200, 100, "pink")
 ];
 
@@ -81,10 +82,12 @@ specialAreas.forEach(function iterate(area, index, array) {
 function happinessDecrease() {
     characters.forEach(function iterate(character, index, array) {
         character.happiness -= 0.1;
-        let happinessInfoLi = document.getElementById("happiness-char-" + (character.charId).toString());
-        happinessInfoLi.innerHTML = "Bonheur : " + character.happiness.toString().match(/^-?\d+(?:\.\d{0,1})?/)[0] + "/100"
+        //let happinessInfoLi = document.getElementById("happiness-char-" + (character.charId).toString());
+        //happinessInfoLi.innerHTML = "Bonheur : " + character.happiness.toString().match(/^-?\d+(?:\.\d{0,1})?/)[0] + "/100"
     });
 }
+
+
 
 var characterSpeed = 2;
 
@@ -123,6 +126,17 @@ function charIsInArea(charToCheck, areaToCheck) {
     return charIsInArea;
 }
 
+function happinessIncrease() {
+    characters.forEach(function iterate(character, index, array) {
+        let solutionArea = specialAreas[0]; //kitchen par exemple
+        if (charIsInArea(character, solutionArea) == true) {
+            character.happiness += 1;
+            //let happinessInfoLi = document.getElementById("happiness-char-" + (character.charId).toString());
+            //happinessInfoLi.innerHTML = "Bonheur : " + character.happiness.toString().match(/^-?\d+(?:\.\d{0,1})?/)[0] + "/100"
+        }
+    });
+}
+
 function charActions() {
     characters.forEach(function iterate(character, index, array) {
         if (character.happiness <= 40) {
@@ -135,14 +149,22 @@ function charActions() {
     });
 }
 
+function displayInfos() {
+    characters.forEach(function iterate(character, index, array) {
+           let happinessInfoLi = document.getElementById("happiness-char-" + (character.charId).toString());
+           happinessInfoLi.innerHTML = "Bonheur : " + character.happiness.toString().match(/^-?\d+(?:\.\d{0,1})?/)[0] + "/100";
+    });
+}
 
 
 function actualize() {
     happinessDecrease();
+    happinessIncrease();
     charActions();
+    displayInfos();
     //console.log("hello!");
 }
-setInterval(actualize, 100);
+setInterval(actualize, 100); //tous les 10ème de secondes...
 
 
 
