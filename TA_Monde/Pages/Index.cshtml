@@ -1,0 +1,92 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<style>
+    .info-pane {
+        height: 535px;
+        width: 214px;
+        position: fixed;
+        left: 0px;
+    }
+
+    .chars-info-list, .chars-info-list ul {
+        padding-left: 20px;
+    }
+    .map {
+        height: 535px;
+        width: 70vw;
+        border: solid grey 1px;
+        background-color: yellowgreen;
+        position: absolute;
+    }
+
+    .character {
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        border: 2px white solid;
+        position: absolute;
+    }
+
+    .ent {
+        background-color: #ff8000;
+    }
+
+    .inf {
+        background-color: #db4dff;
+    }
+
+    .int {
+        background-color: #8a00e6;
+    }
+
+    .ifn {
+        background-color: #80ffbf;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4" style="font-size: revert;">Village 1</h1>
+</div>
+<div class="info-pane">
+    <h2 class="text-center">Infos</h2>
+    <ul class="chars-info-list">
+        <li>#1 (ENT) : 
+            <ul>
+                <li>Bonheur : 60/100</li>
+                <li>Position : 20px/50px</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="map"></div>
+
+
+<script src="~/js/village-un-01.js"></script>
+<script>
+    var characters = [
+        new Character("ent", 50, 50, 50),
+        new Character("inf", 100, 50, 60),
+        new Character("int", 50, 100, 50),
+        new Character("ifn", 100, 100, 60)
+    ];
+    var map = document.getElementsByClassName("map")[0];
+    var charsInfoList = document.getElementsByClassName("chars-info-list")[0];
+
+    characters.forEach(function iterate(character, index, array) {  //character => {
+        let characterDiv = document.createElement("div");
+        characterDiv.classList.add("character", character.typeTa)
+        characterDiv.style.left = character.appearX.toString() + "px";
+        characterDiv.style.top = character.appearY.toString() + "px";
+        map.appendChild(characterDiv);
+
+        let charInfoLi = document.createElement("li");
+
+
+    });
+
+//document.getElementById("demo").innerHTML = "Hello JavaScript!";
+</script> 
