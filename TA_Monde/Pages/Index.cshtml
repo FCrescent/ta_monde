@@ -54,12 +54,12 @@
 <div class="info-pane">
     <h2 class="text-center">Infos</h2>
     <ul class="chars-info-list">
-        <li>#1 (ENT) : 
+        @*<li>#1 (ENT) : 
             <ul>
                 <li>Bonheur : 60/100</li>
                 <li>Position : 20px/50px</li>
             </ul>
-        </li>
+        </li>*@
     </ul>
 </div>
 <div class="map"></div>
@@ -84,6 +84,15 @@
         map.appendChild(characterDiv);
 
         let charInfoLi = document.createElement("li");
+        charInfoLi.innerHTML = "#" + (index + 1).toString() + " (" + character.typeTa.toUpperCase() + ") :";
+        charsInfoList.appendChild(charInfoLi);
+
+        let charInfoUl = document.createElement("ul");
+        charInfoLi.appendChild(charInfoUl);
+        let happinessInfoLi = document.createElement("li");
+        happinessInfoLi.innerHTML = "Bonheur : " + character.happiness.toString() + "/100"
+        charInfoUl.appendChild(happinessInfoLi);
+
 
 
     });
